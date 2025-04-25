@@ -2,3 +2,20 @@
 a.active {
     font-weight: bold;
 }
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.post {
+    border: 1px solid #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.post h3{
+    margin: 0 0 10px 0;
+}
+
