@@ -3,17 +3,30 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>Challenge 10- Data Fetcher</title>
     <link rel="stylesheet" href="screen.css">
   </head>
   <body>
-    <h1>Home</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
-    </nav>
-    <script src="index.js"></script>
+    <h1>Data Fetcher</h1>
+    <div id="posts"></div>
+    <script>
+   fetch('https://jsonplaceholder.typicode.com/posts')
+      .then((response) => response.json())
+      .then(data => {
+        const postsContainer = document.getElementById('posts');
+        data.slice(0, 10).forEach(post => {  // Display only the first 10 posts
+          const postElement = document.createElement('div');
+          postElement.classList.add('post');
+          postElement.innerHTML = `
+            <h3>${post.title}</h3>
+            <p>${post.body}</p>
+          `;
+          postsContainer.appendChild(postElement);
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  </script>
   </body>
 </html>
